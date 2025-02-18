@@ -1,61 +1,42 @@
-Territory Explorer
-Territory Explorer is a Python project developed as part of a university assignment for the Fundamentals of Programming course. The project focuses on analyzing and visualizing rectangular territories composed of vertical and horizontal paths. Each intersection in the territory can be either free or occupied by a mountain. The project provides various functions to explore the connections between intersections, identify mountain chains, and calculate valleys.
+# Territory Analysis Project
 
-Features
-Territory Validation: Check if a given structure represents a valid territory.
+## Overview
+This project is developed for the "Fundamentals of Programming" course and aims to analyze a rectangular territory composed of vertical and horizontal paths. The intersections of these paths may or may not be occupied by mountains, forming chains of mountains and valleys.
 
-Intersection Operations: Validate intersections, check if they are free or occupied, and find adjacent intersections.
+## Features
+The program provides functionalities to:
+- Validate and represent territories and intersections.
+- Identify mountain chains and valleys.
+- Retrieve adjacency and connectivity information.
+- Calculate the number of mountains, mountain chains, and valley sizes.
 
-Chain and Valley Detection: Identify chains of connected mountains and the valleys associated with them.
+## Territory Representation
+- The territory is represented as a tuple of tuples, where each inner tuple represents a vertical path and contains integers (0 for free intersections and 1 for mountains).
+- Each intersection is represented as a tuple (Vertical Path, Horizontal Path).
 
-Territory Visualization: Convert a territory into a human-readable string representation.
+## Implemented Functions
+### Territory and Intersection Functions
+- `eh_territorio(arg)`: Checks if the given argument is a valid territory.
+- `obtem_ultima_intersecao(t)`: Returns the top-rightmost intersection of the territory.
+- `eh_intersecao(arg)`: Checks if the argument is a valid intersection.
+- `eh_intersecao_valida(t, i)`: Checks if an intersection is valid within a given territory.
+- `eh_intersecao_livre(t, i)`: Checks if an intersection is free (not occupied by a mountain).
+- `obtem_intersecoes_adjacentes(t, i)`: Returns a tuple of valid adjacent intersections.
+- `ordena_intersecoes(tup)`: Sorts intersections according to reading order.
+- `territorio_para_str(t)`: Converts the territory into a human-readable string format.
 
-Statistical Analysis: Calculate the number of mountains, mountain chains, and the total size of valleys in a territory.
+### Mountain Chains and Valleys Functions
+- `obtem_cadeia(t, i)`: Returns all connected intersections forming a chain.
+- `obtem_vale(t, i)`: Returns all intersections forming a valley of a given mountain.
 
-Usage
-To use the Territory Explorer, simply import the provided functions into your Python script. Below are some examples of how to use the main functionalities:
+### Territory Information Functions
+- `verifica_conexao(t, i1, i2)`: Checks if two intersections are connected.
+- `calcula_numero_montanhas(t)`: Counts the number of mountains in the territory.
+- `calcula_numero_cadeias_montanhas(t)`: Counts the number of mountain chains.
+- `calcula_tamanho_vales(t)`: Calculates the total size of all valleys.
 
-Validating a Territory
-python
-Copy
-from FP2324P1 import eh_territorio
+## Execution Instructions
+1. Ensure you have Python 3 installed.
+2. Run the Python script: `python FP2324P1.py`
+3. Use the defined functions to analyze a given territory.
 
-territory = ((0, 1, 0, 0), (0, 0, 0, 0), (0, 0, 1, 0), (1, 0, 0, 0), (0, 0, 0, 0))
-print(eh_territorio(territory))  # Output: True
-Finding Adjacent Intersections
-python
-Copy
-from FP2324P1 import obtem_intersecoes_adjacentes
-
-territory = ((0, 1, 0, 0), (0, 0, 0, 0), (0, 0, 1, 0), (1, 0, 0, 0), (0, 0, 0, 0))
-intersection = ('C', 3)
-print(obtem_intersecoes_adjacentes(territory, intersection))  # Output: (('C', 2), ('B', 3), ('D', 3), ('C', 4))
-Visualizing a Territory
-python
-Copy
-from FP2324P1 import territorio_para_str
-
-territory = ((0, 1, 0, 0), (0, 0, 0, 0), (0, 0, 1, 0), (1, 0, 0, 0), (0, 0, 0, 0))
-print(territorio_para_str(territory))
-Calculating Mountain Chains
-python
-Copy
-from FP2324P1 import calcula_numero_cadeias_montanhas
-
-territory = ((1, 1, 1, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 0), (0, 0, 0, 0))
-print(calcula_numero_cadeias_montanhas(territory))  # Output: 2
-Installation
-Clone the repository to your local machine:
-
-bash
-Copy
-git clone https://github.com/your-username/territory-explorer.git
-Navigate to the project directory:
-
-bash
-Copy
-cd territory-explorer
-You can now import the functions from FP2324P1.py into your Python scripts.
-
-Acknowledgments
-This project was developed as part of the Fundamentals of Programming course at Instituto Superior Técnico.
